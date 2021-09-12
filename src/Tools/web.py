@@ -20,3 +20,6 @@ def contactGithub():
     webbrowser.open(url="https://github.com/hieuhdh", new=new)
 def contactLinkIn():
     webbrowser.open(url="https://www.linkedin.com/in/hieuhdh", new=new)
+
+def contactGmail():
+    webbrowser.open(url="mailto:someone@example.com",new=new)

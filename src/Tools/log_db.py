@@ -18,20 +18,16 @@ def checkDB_Sign(a):
             return True
     return False
 
-
-
 def encode(secret):
     key = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ"+ \
             "[]^_`abcdefghijklmnopqrstuvwxyz~"
-    rotate_const = 13
+    size = 44
     encoded = ""
     for c in secret:
         index = key.find(c)
-        original_index = (index + rotate_const) % len(key)
+        original_index = (index + size) % len(key)
         encoded = encoded + key[original_index]
     
     return str(hashDB(encoded))
-
-
 
 

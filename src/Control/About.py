@@ -1,9 +1,6 @@
-from tkinter.font import BOLD
 from PIL import ImageTk
 from tkinter import*
 from PIL import Image
-from tkinter import messagebox
-from tkinter.ttk import Checkbutton
 from Tools.Button import*
 from Tools.web import*
 
@@ -11,26 +8,26 @@ class AboutMe:
     def __init__(self, root):
         self.root  = root
       
-        ## Init Frame and button for aboutme-part
+        ## Init Frame and button 
        
-        Frame_about = Frame(self.root, bg="#f0f0f0")
-        Frame_about.place(x = 500,y = 140, height = 450, width=500)
+        Frame_about = Frame(self.root, bg="#120b26")
+        Frame_about.place(x = 300, y = 0, height = 540, width=660)
 
-        self.title = Label(Frame_about, text = "Login", font= ("Georgia", 35, "bold"),fg="#6e6aba",bg="#f0f0f0").place(x = 65, y = 30)
-        self.desc = Label(Frame_about, text = "Join us with", font = ("UTM-Avo",12,"bold"),fg="#6e6aba",bg="#f0f0f0").place(x = 70, y = 100)
+        global background
+        global bt1_img, bt_two_img, bt3_img, bt4_img
+        background = PhotoImage(file=f"images/interfaces/About.png")
+        self.background = Label(Frame_about, image = background).place(x = 0, y = 0, relheight = 1, relwidth = 1 )
+
+        self.facebook = Button(Frame_about,relief="flat",cursor="hand2",borderwidth=0,command=contactFB, bg = "#561d98", text = "facebook", font = ("Georgia",18,"bold"), activebackground="#561d98")
+        self.facebook.place(x = 80, y =190)
+
+        self.github = Button(Frame_about,height = 1,relief="flat",cursor="hand2",borderwidth=0,command=contactGithub, bg = "#b488fd", text = "github", activebackground="#b488fd", font = ("Georgia", 30, "bold"))
+        self.github.place(x = 130, y = 415)
+
+        self.gmail = Button(Frame_about,height = 1,relief="flat",cursor="hand2",borderwidth=0, bg = "#eb78bb", text = "Google Mail", activebackground="#eb78bb", font = ("Georgia", 25, "bold"))
+        self.gmail.place(x = 325, y = 190)
+
+        self.LinkIn = Button(Frame_about,height = 1,relief="flat",cursor="hand2",borderwidth=0,command=contactLinkIn, bg = "#43289e", text = "LinkIn", activebackground="#43289e", font = ("Georgia", 25, "bold"))
+        self.LinkIn.place(x = 438, y = 430)
+
         
-
-        self.bt1_img = PhotoImage(file="images/buttons/bt1.png")
-        self.bt_two_img = PhotoImage(file="images/bt2.png")
-        self.bt3_img = PhotoImage(file="images/bt3.png")
-        self.bt4_img = PhotoImage(file="images/bt4.png")
-
-        self.bt1_btn = Button(Frame_about,image=self.bt1_img,relief="flat",cursor="hand2",borderwidth=0,command=contactFB).place(x = 55, y = 50)
-
-        self.bt_two_btn = Button(Frame_about,relief="flat",cursor="hand2",borderwidth=0,image=self.bt_two_img,command=contactLinkIn).place(x = 295, y = 50)
-
-        self.bt3_btn = Button(Frame_about,relief="flat",cursor="hand2",borderwidth=0,image=self.bt3_img,command=openFB).place(x = 55, y = 300)
-
-        self.bt4_btn = Button(Frame_about,relief="flat",cursor="hand2",borderwidth=0,image=self.bt4_img,command=contactGithub).place(x = 295, y = 180)
-       
- 

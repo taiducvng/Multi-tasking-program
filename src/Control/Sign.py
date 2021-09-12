@@ -9,33 +9,32 @@ class Sign:
     def __init__(self, root):
         self.root  = root
 
-        ## Init frame and button for sign in part
+        ## Init frame and button
 
-        Frame_sign = Frame(self.root, bg="#f0f0f0")
-        Frame_sign.place(x = 500,y = 140, height = 450, width=500)
+        Frame_sign = Frame(self.root, bg="#120b26")
+        Frame_sign.place(x = 300,y = 0, height = 540, width=660)
 
-        self.title = Label(Frame_sign, text = "Sign up", font= ("Georgia", 35, "bold"),fg="#6e6aba",bg="#f0f0f0").place(x = 65, y = 30)
-        self.desc = Label(Frame_sign, text = "Join us with", font = ("UTM-Avo",12,"bold"),fg="#6e6aba",bg="#f0f0f0").place(x = 70, y = 100)
-        
-        self.lab_name = Label(Frame_sign, text = "Full name*", font = ("Times New Roman",12,"bold"),fg="#000000",bg="#f0f0f0").place(x = 70, y = 145)
-        self.txt_name = Entry(Frame_sign, font=("Times New Roman",15),bg="white",cursor="hand2")
-        self.txt_name.place(x = 70, y = 170, height= 35, width= 350)    
+        global image_default_signup
+        image_default_signup = ImageTk.PhotoImage(file = 'images/interfaces/signup.png')
+        logo_default = Label(Frame_sign, image = image_default_signup )
+        logo_default.place( x = 0, y = 0, relheight = 1, relwidth = 1 )
 
-        self.lab_username = Label(Frame_sign, text = "Username*", font = ("Times New Roman",12,"bold"),fg="#000000",bg="#f0f0f0").place(x = 70, y = 205)
-        self.txt_username = Entry(Frame_sign, font=("Times New Roman",15),bg="white",cursor="hand2")
-        self.txt_username.place(x = 70, y = 230, height= 35, width= 350)
+        self.txt_name = Entry(Frame_sign, font=("Times New Roman",15), fg = "#8078c4", bg = "#120b26", cursor="hand2", bd = 0, width = 10)
+        self.txt_name.place(x = 180, y = 175, height= 34, width= 326)    
 
-        self.lab_password = Label(Frame_sign, text = "Password*", font = ("Times New Roman",12,"bold"),fg="#000000",bg="#f0f0f0").place(x = 70, y = 265)
-        self.txt_password = Entry(Frame_sign, font=("Times New Roman",15), bg="white",cursor="hand2")
-        self.txt_password.place(x = 70, y = 290, height= 35, width= 350)
+        self.txt_username = Entry(Frame_sign, font=("Times New Roman", 15), fg = "#8078c4", bg = "#120b26", cursor = "hand2", bd = 0)
+        self.txt_username.place(x = 180, y = 248, height= 34, width= 326)
 
-        self.lab_password_comfirm = Label(Frame_sign, text = "Confirm Password*", font = ("Times New Roman",12,"bold"),fg="#000000",bg="#f0f0f0").place(x = 70, y = 325)
-        self.txt_password_comfirm = Entry(Frame_sign, font=("Times New Roman",15), bg="white",cursor="hand2")
-        self.txt_password_comfirm.place(x = 70, y = 350, height= 35, width= 350)
+        self.txt_password = Entry(Frame_sign, font=("Times New Roman",15), fg = "#8078c4",bg = "#120b26", cursor = "hand2", show = "*", bd = 0, highlightbackground = "#b0bde0")
+        self.txt_password.place(x = 180, y = 321, height= 34, width= 326)
+
+        self.txt_password_comfirm = Entry(Frame_sign, font = ("Times New Roman",15), fg = "#8078c4",bg = "#120b26", cursor = "hand2", show = "*", bd = 0)
+        self.txt_password_comfirm.place(x = 180, y = 394, height= 34, width= 326)
     
         ## Make sign in button
-
-        self.sign_btn = Button(self.root, command=self.sign, text = "   Sign up here   ", font = ("Times New Roman",12,"bold"),fg="#f0f0f0",bg="#6e6aba",relief="flat",cursor="hand2",borderwidth=0).place(x = 800, y = 530)
+        
+        self.sign_btn = Button(Frame_sign, activebackground="#823af7", activeforeground="white",command=self.sign, text = "Submit", font = ("Times New Roman",12,"bold"), fg = "#211c49", bg = "#823af7", relief = "flat", cursor = "hand2", borderwidth = 0, width = 38)
+        self.sign_btn.place(x = 156, y = 470)
         
     ## Action for Sign in
 

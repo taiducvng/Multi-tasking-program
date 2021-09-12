@@ -7,52 +7,47 @@ from Tools.web import*
 from tkhtmlview import HTMLLabel
 from Tools.log_db import*
 
+global check
+check = False
+
 class Login:
     def __init__(self, root):
         self.root  = root
-        self.username = StringVar().set("xxxxxx")
-        self.password = StringVar().set("xxxxxx")
+       
+        ## Init frame and button 
+
+        Frame_login = Frame(self.root, bg="#120b26")
+        Frame_login.place(x = 300,y = 0, height = 540, width=660)
         
-        ## Init frame and button for login part
-
-        Frame_login = Frame(self.root, bg="#f0f0f0")
-        Frame_login.place(x = 500,y = 140, height = 450, width=500)
-
-        self.title = Label(Frame_login, text = "Login", font= ("Georgia", 35, "bold"),fg="#6e6aba",bg="#f0f0f0").place(x = 65, y = 30)
-        self.desc = Label(Frame_login, text = "Join us with", font = ("UTM-Avo",12,"bold"),fg="#6e6aba",bg="#f0f0f0").place(x = 70, y = 100)
+        global image_default_login
+        image_default_login = ImageTk.PhotoImage(file = 'images/interfaces/login.png')
         
+        logo_default = Label(Frame_login, image = image_default_login )
+        logo_default.place( x = 0, y = 0, relheight = 1, relwidth = 1 )
+
+        self.txt_username = Entry(Frame_login, font=("Times New Roman",15), fg = "#8078c4", bg="#120b26",cursor="hand2", highlightcolor = "#b0bde0", highlightbackground = "red", bd = 0)
+        self.txt_username.place(x = 180, y = 175, height= 34, width= 326)
+
+        self.txt_password = Entry(Frame_login, font=("Times New Roman",15),fg = "#8078c4", bg="#120b26",cursor="hand2", bd = 0, show = "*")
+        self.txt_password.place(x = 180, y = 248, height= 34, width= 326)
+
+        self.forgot_pw = Button(Frame_login, relief = "flat", cursor = "hand2", borderwidth = 0, text = "Forgot your passwork ?", font = ("Times New Roman",12,"bold"), command = contactGmail, fg="#823af7",bg="#120b26", activeforeground = "white", activebackground = "#120b26")
+        self.forgot_pw.place(x = 345, y = 285)
         
-        self.lab_username = Label(Frame_login, text = "Username*", font = ("Times New Roman",12,"bold"),fg="#000000",bg="#f0f0f0").place(x = 70, y = 145)
-        self.txt_username = Entry(Frame_login, font=("Times New Roman",15),bg="white",cursor="hand2")
-        self.txt_username.place(x = 70, y = 170, height= 35, width= 350)
-
-        self.lab_password = Label(Frame_login, text = "Password*", font = ("Times New Roman",12,"bold"),fg="#000000",bg="#f0f0f0").place(x = 70, y = 205)
-        self.txt_password = Entry(Frame_login, font=("Times New Roman",15), bg="white",cursor="hand2",fg= "#000000")
-        self.txt_password.place(x = 70, y = 230, height= 35, width= 350)
-
-        self.lab_password_forgot = HTMLLabel(Frame_login, html="<h6> <a style='text-decoration: none' href='mailto:someone@example.com'>Forgot password?</a> </h6>").place(x = 305, y = 210, height=20, width=200)
-        self.lab_ques = Label(Frame_login, text = "Join with ", font = ("Times New Roman",12,"bold"),fg="#000000",bg="#f0f0f0").place(x = 70, y = 270)
-        
-        ## Make logo and action when you click
-
-        self.fb_img = PhotoImage(file="images/fb.png")
-        self.github_img = PhotoImage(file="images/github.png")
-        self.gg_img = PhotoImage(file="images/google.png")
-        
-        self.github_btn = Button(Frame_login,relief="flat",cursor="hand2",borderwidth=0,image=self.github_img,command=openGH)
-        self.github_btn.place(x = 70, y = 300)
-
-        self.fb_btn = Button(Frame_login,relief="flat",cursor="hand2",borderwidth=0,image=self.fb_img,command=openFB)
-        self.fb_btn.place(x = 105, y = 300)
-
-        self.gg_btn = Button(Frame_login,relief="flat",cursor="hand2",borderwidth=0,image=self.gg_img, command=openGG)
-        self.gg_btn.place(x = 140, y = 300)
+        # self.abc = HTMLLabel(Frame_login, html = "<h6> <a style='text-decoration: none' href='mailto:someone@example.com' class = 'swapButton'>Forgot password?</a> </h6>")
+        # self.abc.place(x = 290, y = 210, height=20, width=200)
 
         ## Make button login
 
-        self.login_btn = Button(self.root, command=self.login, text = "    Login here    ", font = ("Times New Roman",12,"bold"),fg="#f0f0f0",bg="#6e6aba",relief="flat",cursor="hand2",borderwidth=0).place(x = 800, y = 530)
-        
+        self.login_btn = Button(Frame_login, activeforeground = "white", activebackground = "#823af7",command=self.login, text = "Login to your Account", font = ("Times New Roman",12,"bold"),fg="#211c49",bg="#823af7",relief="flat",cursor="hand2",borderwidth=0,width=30)
+        self.login_btn.place(x = 190, y = 323)
 
+        self.login_btn = Button(Frame_login, activeforeground = "white", activebackground = "#4d98e1",command=openFB, text = "Login with Facebook", font = ("Times New Roman",12,"bold"),fg="#211c49",bg="#4d98e1",relief="flat",cursor="hand2",borderwidth=0,width=30)
+        self.login_btn.place(x = 190, y = 396)
+
+        self.login_btn = Button(Frame_login, activeforeground = "white", activebackground = "#c4acec",command=openGG, text = "Login with Google", font = ("Times New Roman",12,"bold"),fg="#211c49",bg="#c4acec",relief="flat",cursor="hand2",borderwidth=0,width=30)
+        self.login_btn.place(x = 190, y = 470)
+        
         ## Check login
         
     ## Action for login
@@ -69,6 +64,8 @@ class Login:
             s2 = encode(self.txt_password.get())
             a = [s1, s2]
             if checkDB_Login(a) == True:
+                global check
+                check = True
                 messagebox.showinfo("Welcome","Logged in successfully!",parent = self.root)
             else:
                 messagebox.showerror("Error","Invalid username/password!", parent = self.root)
@@ -79,3 +76,5 @@ class Login:
             for i in self.txt_password:
                 s += "+"
         return s
+def isLoginSuccessfully():
+    return check
