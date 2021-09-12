@@ -118,10 +118,11 @@
 8. User information
 
     ![pass](https://user-images.githubusercontent.com/86739367/132998817-2a0cb670-ab77-4a3e-89f8-39b4380f7538.png)
-**User information is saved as a `log.txt` file in the order of fullname, username and password. In particular, the password is encrypted one-way into a string of numbers**
+
+    **User information is saved as a `log.txt` file in the order of fullname, username and password. In particular, the password is encrypted one-way into a string of numbers**
 
 
-**As you can see from the screenshots above, Im not really good at design things and this repo is just a part of me practice making an app with little knowledges about tkinter, decoding, creating a file, some layout stuff in Python. The content for the app will be in the application part as I will try to make it even better**
+**As you can see from the screenshots above, Im not really good at design things and this repo is just a part of me practice making an app with little knowledges about tkinter, encoding, creating a file, some layout stuff in Python. The content for the app will be in the application part as I will try to make it even better**
 
 ## License
 
