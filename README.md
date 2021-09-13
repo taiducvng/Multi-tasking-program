@@ -109,7 +109,7 @@
 
 6. About me 
 
-    ![aboutme](https://user-images.githubusercontent.com/86739367/132989355-32ad861a-9d7d-4acc-88d1-2fb3f3ad9eaa.png)
+    ![aboutme](https://user-images.githubusercontent.com/86739367/133070589-ade6b1c2-188d-4710-87a9-9f87f2f3dfaa.png)
 
 7. Notifications
 

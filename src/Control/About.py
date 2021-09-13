@@ -27,7 +27,7 @@ class AboutMe:
         self.gmail = Button(Frame_about,height = 1,relief="flat",cursor="hand2",borderwidth=0, bg = "#eb78bb", text = "Google Mail", activebackground="#eb78bb", font = ("Georgia", 25, "bold"))
         self.gmail.place(x = 325, y = 190)
 
-        self.LinkIn = Button(Frame_about,height = 1,relief="flat",cursor="hand2",borderwidth=0,command=contactLinkIn, bg = "#43289e", text = "LinkIn", activebackground="#43289e", font = ("Georgia", 25, "bold"))
-        self.LinkIn.place(x = 438, y = 430)
+        self.LinkIn = Button(Frame_about,height = 1,relief="flat",cursor="hand2",borderwidth=0,command=contactLinkIn, bg = "#43289e", text = "LinkedIn", activebackground="#43289e", font = ("Georgia", 25, "bold"))
+        self.LinkIn.place(x = 420, y = 430)
 
         
