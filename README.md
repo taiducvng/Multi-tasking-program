@@ -81,7 +81,7 @@
 
 ## Documents
 
-  For help getting started with python, view our online [documentation](https://www.python.org/).
+  For help getting started with python, view our online [documentation](https://www.discord.com/).
 
 ## Bugs and Issues
 
